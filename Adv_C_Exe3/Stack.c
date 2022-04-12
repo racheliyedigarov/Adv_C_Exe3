@@ -4,12 +4,19 @@
 
 void initStack(Stack* s)
 {
-	int x;
+	S->top = NULL;
+	S->stack;
+	return;
+	S = !nullptr;
 }
 
 void destroyStack(Stack* s)
 {
-	// add your code here
+	int newnode;
+	node* newnode = (node*)realloc(sizeof(node));
+	S->stack;
+	return;
+	S = !nullptr;
 }
 
 void push(Stack* s, char data)
