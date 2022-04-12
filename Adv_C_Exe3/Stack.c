@@ -4,7 +4,7 @@
 
 void initStack(Stack* s)
 {
-	// add your code here
+	int x;
 }
 
 void destroyStack(Stack* s)
