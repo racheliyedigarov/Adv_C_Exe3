@@ -1,62 +1,60 @@
 #include "Stack.h"
+#include <stdio.h>
 
 /***************** Stack ADT Implementation *****************/
 
-typedef struct stack {
-	int* Items;
-	int stackSize;
-	int top;
-} stack;
+charNode* addToHead(charNode* head, charNode* toAdd);
+void removeItem(charNode** head);
 
 void initStack(Stack* s)
 {
-	S->top = NULL;
-	S->stack;
+	s->head = NULL;
 	return;
 
 }
 
 void destroyStack(Stack* s)
 {
-	int newnode;
-	list_delete(s->top);
-	node* newnode = (node*)realloc(sizeof(node));
-	S->stack;
-	return;
-	s = !nullptr;
+	
 }
 
 void push(Stack* s, char data)
 {
-	charNode* new = (charNode*)malloc(sizeof(charNode));
-	toAdd->next = top;
-	head = toAdd;
-	return top;
-	s->head = addToHead(s->top, new);
-	s = !nullptr;
+	
+		 charNode* newnode = (charNode*)malloc(sizeof(charNode));
+		if (newnode == NULL) {
+			printf("push: memory allocation problem\n");
+			return;
+		}
+		newnode->data = data;
+		s->head = addToHead(s->head, newnode);
 }
+charNode* addToHead(charNode* head, charNode* toAdd) {
+	toAdd->next = head;
+	head = toAdd;
+	return head;
+}
+
 
 char pop(Stack* s)
 {
-	int first;
-	if (*top == NULL)
-		printf("Stack is empty \n");
-	return 0;
-	first = s->top->data;
-	removeItem(&s->top);
-	return first;
+	int res;
+		if (s->head== NULL) { printf("\nSTACK IS EMPTY"); return 0; }
+		res = s->head->data;
+		removeItem(&(s->head));
+			return(res);
+}
+void removeItem(charNode** head) {
+	if (*head == NULL) return; //if stack empty
+	charNode* tmp = *head;
+	*head = (*head)->next;
+	free(tmp);
 }
 
 
 int isEmptyStack(const Stack* s)
 {
-	s->stack;
-	if s > top = -1;
-	char isEmpty(const Stack_St * S)
-		return 1;
-	else
-		return 0;
-	s = !nullptr;
+	return (!(s->head));
 }
 
 /*************** Functions using stacks - Implementation/definition **************************/
@@ -83,8 +81,6 @@ void flipBetweenHashes(const char* sentence)
 		}
 	}
 	printf("\t");
-
-
 }
 
 int isPalindrome(Stack* s)
@@ -92,12 +88,10 @@ int isPalindrome(Stack* s)
 	char str[5];
 	int count = 0;
 	char tmp = 0;
-	if (*head == NULL)
+	if (s->head == NULL)
 		printf("Stack is empty \n");
 	str[count] = pop(s);
 	count++;
-}
-	else count--;
 	for (int i = 0; i < count; i++) {
 		if (str[i] != str[count - i]) {
 			tmp = 0;
@@ -118,7 +112,7 @@ void rotateStack(Stack* s, int n)
 		initStack(&t2);
 		initStack(&t3);
 		while (!isEmptyStack(s)) {
-			push(&t, pop(s));
+			push(&t1, pop(s));
 			size++;
 		}
 		if (n <= size) {

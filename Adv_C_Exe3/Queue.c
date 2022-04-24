@@ -1,21 +1,24 @@
 #include "Queue.h"
+#include <stdio.h>
 
 /***************** Queue ADT Implementation *****************/
 
 void initQueue(Queue* q)
 {
-	q->top = NULL;
+	q->head = NULL;
 	q->tail = NULL;
 	return;
 }
 
 void destroyQueue(Queue* q)
 {
-	int newnode;
-	list_delete2(s->head);
-	node* newnode = (node*)realloc(sizeof(node));
-	q->Queue;
-	return;
+	while (q->head != NULL)
+	{
+		intNode* temp = q->head;
+		q->head = q->head->next;
+		free(temp);
+	}
+	free(q);
 }
 
 void enqueue(Queue* q, unsigned int data)
@@ -23,22 +26,22 @@ void enqueue(Queue* q, unsigned int data)
 	intNode* new = (intNode*)malloc(sizeof(intNode));
 	new->next = NULL;
 	if (!isEmptyQueue(q)) q->tail->next = new;
-	else q->top = new;
+	else q->head = new;
 	q->tail = new;
 }
 
 unsigned int dequeue(Queue* q)
 {
-	if (*head == NULL)
+	if (q->head == NULL)
 	{
 		printf("Stack is empty \n");
 		return 0;
 	}
 	else {
-		unsigned int tmp = q->top->data;
-		intNode* old = q->top;
-		q->head = q->top->next;
-		if (q->top == NULL) q->tail = NULL;
+		unsigned int tmp = q->head->data;
+		intNode* old = q->head;
+		q->head = q->head->next;
+		if (q->head == NULL) q->tail = NULL;
 		free(old);
 		return tmp;
 	}
@@ -46,10 +49,10 @@ unsigned int dequeue(Queue* q)
 
 int isEmptyQueue(const Queue* q)
 {
-	if (*head == NULL)
+	if (q->head == NULL)
 		return 1;
 	else return 0;
-	q->tail == NULL && q->top == NULL;
+	q->tail == NULL && q->head == NULL;
 }
 
 /***************** Functions using Queues - Implementation/definition **************************/
@@ -70,7 +73,7 @@ void rotateQueue(Queue* q)
 		while (!isEmptyQueue(tmp)) {
 			enqueue(q, dequeue(tmp));
 		}
-		q->Queue;
+
 	}
 }
 
@@ -95,7 +98,7 @@ void cutAndReplace(Queue* q)
 	for (int i = 0; i < count / 2; i++) {
 		enqueue(t2, dequeue(t1));
 	}
-	while (!isEmptyQueue(tm)) {
+	while (!isEmptyQueue(t2)) {
 		rotateQueue(t1);
 		enqueue(q, dequeue(t1));
 	}
@@ -116,10 +119,10 @@ void sortKidsFirst(Queue* q)
 	while (!isEmptyQueue(tmp)) {
 		rotateQueue(tmp);
 		val = dequeue(tmp);
-		while (!isEmptyQueue(q) && q->tail > val) {
+		while (!isEmptyQueue(q) && q->tail > data) {
 			enqueue(tmp, dequeue(q));
 		}
-		enqueue(q, val);
+		enqueue(q, data);
 	}
 	while (!isEmptyQueue(tmp)) {
 		enqueue(q, dequeue(tmp));
