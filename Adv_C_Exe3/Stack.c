@@ -15,7 +15,11 @@ void initStack(Stack* s)
 
 void destroyStack(Stack* s)
 {
-	
+		while (s.head != NULL)
+	{
+		pop(s);
+	}
+	free(s);
 }
 
 void push(Stack* s, char data)
